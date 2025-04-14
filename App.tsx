@@ -1,45 +1,19 @@
+import 'react-native-reanimated';
 import React from 'react'
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  StyleSheet,
-} from 'react-native'
+import { StatusBar, useColorScheme } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import { RootNavigator } from './src/navigation/RootNavigator.tsx'
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark'
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#121212' : '#FFFFFF',
-  }
-  const textStyle = {
-    color: isDarkMode ? '#FFFFFF' : '#000000',
-  }
-
   return (
-    <SafeAreaView style={[styles.container, backgroundStyle]}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}
-        contentContainerStyle={styles.scrollContainer}>
-        <Text style={textStyle}>Personal Expenses Tracker App</Text>
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <RootNavigator />
+    </SafeAreaProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollContainer: {
-    flexGrow: 1,
-  },
-})
 
 export default App
