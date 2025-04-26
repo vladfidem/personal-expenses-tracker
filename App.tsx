@@ -1,4 +1,4 @@
-import 'react-native-reanimated';
+import 'react-native-reanimated'
 import React from 'react'
 import { StatusBar, useColorScheme } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
